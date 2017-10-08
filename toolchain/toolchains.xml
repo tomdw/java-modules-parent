@@ -1,0 +1,35 @@
+<!-- Adapt the paths of the JDK-homes to your local development machine and
+	copy this file to ~/.m2 -->
+<toolchains>
+	<toolchain>
+		<type>jdk</type>
+		<provides>
+			<version>1.8</version>
+		</provides>
+		<configuration>
+			<jdkHome>
+				/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+			</jdkHome>
+		</configuration>
+	</toolchain>
+	<toolchain>
+		<type>jdk</type>
+		<provides>
+			<version>1.9</version>
+		</provides>
+		<configuration>
+			<jdkHome>/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home
+			</jdkHome>
+		</configuration>
+	</toolchain>
+	<toolchain>
+		<type>jdk</type>
+		<provides>
+			<version>9</version>
+		</provides>
+		<configuration>
+			<jdkHome>/Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home
+			</jdkHome>
+		</configuration>
+	</toolchain>
+</toolchains>
