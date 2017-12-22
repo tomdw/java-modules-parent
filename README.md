@@ -25,3 +25,22 @@ In your project which you want to build using java 9 compatible maven plugins, u
 	<relativePath />
 </parent>
 ```
+
+### Add version to module-info.class
+
+To make sure that the module version is also added to the module-info.class a preconfigured execution of the exec-maven-plugin is available that updates the jar with the module version.
+ 
+You need to add this the module build (if already listed, then already ok):
+
+```xml
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+```
+
+The `jar` tool will be automatically used to update the module-info.class inside the jar with the maven project version.
