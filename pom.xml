@@ -6,8 +6,33 @@
 
 	<groupId>io.github.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>A parent pom optimised to build and release io.github.tomdw java modules artefacts</description>
+	<url>https://github.com/tomdw/java-modules-parent</url>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Tom De Wolf</name>
+			<email>mail@tomdewolf.be</email>
+			<organizationUrl>https://github.com/tomdw</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/tomdw/java-modules-parent.git</connection>
+		<developerConnection>scm:git:ssh://github.com:tomdw/java-modules-parent.git</developerConnection>
+		<url>http://github.com/tomdw/java-modules-parent/tree/master</url>
+	</scm>
 
 	<properties>
 		<version.maven.plugin.clean>3.1.0</version.maven.plugin.clean>
@@ -217,6 +242,7 @@
 						<tagNameFormat>v@{project.version}</tagNameFormat>
 						<pushChanges>false</pushChanges>
 						<localCheckout>true</localCheckout>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<goals>deploy</goals>
 					</configuration>
 				</plugin>
