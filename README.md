@@ -19,7 +19,7 @@ In your project which you want to build using java 11 compatible maven plugins, 
 
 ```xml
 <parent>
-	<groupId>be.tomdw.java.modules</groupId>
+	<groupId>io.github.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
 	<version>1.0.0</version>
 	<relativePath />
