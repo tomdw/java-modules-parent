@@ -4,51 +4,163 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>be.tomdewolf.jpms</groupId>
+	<groupId>be.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<properties>
+		<version.maven.plugin.clean>3.1.0</version.maven.plugin.clean>
+		<version.maven.plugin.resources>3.1.0</version.maven.plugin.resources>
+		<version.maven.plugin.compiler>3.8.0</version.maven.plugin.compiler>
+		<version.maven.plugin.surefire>2.22.1</version.maven.plugin.surefire>
+		<version.maven.plugin.jar>3.1.1</version.maven.plugin.jar>
+		<version.maven.plugin.install>2.5.2</version.maven.plugin.install>
+		<version.maven.plugin.exec>1.6.0</version.maven.plugin.exec>
+		<version.maven.plugin.toolchains>1.1</version.maven.plugin.toolchains>
+		<version.maven.plugin.source>3.0.1</version.maven.plugin.source>
+		<version.maven.plugin.release>2.5.3</version.maven.plugin.release>
+		<version.maven.plugin.scm.provider.gitexe>1.11.1</version.maven.plugin.scm.provider.gitexe>
+		<version.maven.plugin.deploy>2.8.2</version.maven.plugin.deploy>
+		<version.maven.plugin.javadoc>3.0.1</version.maven.plugin.javadoc>
+		<version.maven.plugin.assembly>3.1.1</version.maven.plugin.assembly>
+		<version.maven.plugin.dependency>3.1.1</version.maven.plugin.dependency>
+		<version.asm>7.0</version.asm>
+
+		<version.jdk>11</version.jdk>
+		<maven.compiler.source>${version.jdk}</maven.compiler.source>
+		<maven.compiler.target>${version.jdk}</maven.compiler.target>
+		<release.jdk>${version.jdk}</release.jdk>
+
+		<project.encoding>UTF-8</project.encoding>
+		<maven.surefire.plugin.forkCount>1</maven.surefire.plugin.forkCount>
+		<maven.surefire.plugin.reuseForks>true</maven.surefire.plugin.reuseForks>
+		<jacoco.argLine />
+		<surefire.default.argLine>-Dfile.encoding=UTF-8 -Xms512m -Xmx512m</surefire.default.argLine>
+		<argLine>@{jacoco.argLine} ${surefire.default.argLine}</argLine>
+	</properties>
+
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.yml</include>
+					<include>**/*.yaml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.properties</exclude>
+					<exclude>**/*.yml</exclude>
+					<exclude>**/*.yaml</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.yml</include>
+					<include>**/*.yaml</include>
+				</includes>
+				<filtering>true</filtering>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<excludes>
+					<exclude>**/*.properties</exclude>
+					<exclude>**/*.yml</exclude>
+					<exclude>**/*.yaml</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</testResource>
+		</testResources>
 		<pluginManagement>
 			<plugins>
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${version.maven.plugin.clean}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
+					<version>${version.maven.plugin.resources}</version>
 					<configuration>
-						<encoding>UTF-8</encoding>
+						<encoding>${project.encoding}</encoding>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.7.0</version>
+					<version>${version.maven.plugin.compiler}</version>
 					<configuration>
-						<source>9</source>
-						<release>9</release>
-						<encoding>UTF-8</encoding>
+						<parameters>true</parameters>
+						<showDeprecation>true</showDeprecation>
+						<showWarnings>true</showWarnings>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+						<release>${release.jdk}</release>
+						<encoding>${project.encoding}</encoding>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.ow2.asm</groupId>
+							<artifactId>asm</artifactId>
+							<version>${version.asm}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.20.1</version>
+					<version>${version.maven.plugin.surefire}</version>
+					<configuration>
+						<forkCount>${maven.surefire.plugin.forkCount}</forkCount>
+						<reuseForks>${maven.surefire.plugin.reuseForks}</reuseForks>
+						<trimStackTrace>false</trimStackTrace>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.ow2.asm</groupId>
+							<artifactId>asm</artifactId>
+							<version>${version.asm}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.maven.plugin.source}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.0.2</version>
+					<version>${version.maven.plugin.jar}</version>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<version>${version.maven.plugin.install}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.6.0</version>
+					<version>${version.maven.plugin.exec}</version>
 					<executions>
 						<execution>
 							<id>add-version-to-jar</id>
@@ -77,14 +189,59 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-toolchains-plugin</artifactId>
-					<version>1.1</version>
+					<version>${version.maven.plugin.toolchains}</version>
 					<configuration>
 						<toolchains>
 							<jdk>
-								<version>9</version>
+								<version>${version.jdk}</version>
 							</jdk>
 						</toolchains>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>${version.maven.plugin.release}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-gitexe</artifactId>
+							<version>${version.maven.plugin.scm.provider.gitexe}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<pushChanges>false</pushChanges>
+						<localCheckout>true</localCheckout>
+						<goals>deploy</goals>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${version.maven.plugin.deploy}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.maven.plugin.javadoc}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.ow2.asm</groupId>
+							<artifactId>asm</artifactId>
+							<version>${version.asm}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${version.maven.plugin.assembly}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${version.maven.plugin.dependency}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -104,5 +261,11 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>develop</id>
+		</profile>
+	</profiles>
 
 </project>

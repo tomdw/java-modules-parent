@@ -15,11 +15,11 @@ local machine. For example inside the  ~/.m2 directory.
 
 ### Use as parent
 
-In your project which you want to build using java 9 compatible maven plugins, use the following snippet as maven parent:
+In your project which you want to build using java 11 compatible maven plugins, use the following snippet as maven parent:
 
 ```xml
 <parent>
-	<groupId>be.tomdewolf.jpms</groupId>
+	<groupId>be.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
 	<version>1.0.0</version>
 	<relativePath />
@@ -30,7 +30,7 @@ In your project which you want to build using java 9 compatible maven plugins, u
 
 To make sure that the module version is also added to the module-info.class a preconfigured execution of the exec-maven-plugin is available that updates the jar with the module version.
  
-You need to add this the module build (if already listed, then already ok):
+You need to add this to the module build (if exec-maven-plugin is already listed, then the extra configuration will be picked up):
 
 ```xml
 	<build>
