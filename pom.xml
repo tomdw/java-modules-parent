@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -32,7 +30,8 @@
 		<connection>scm:git:git://github.com/tomdw/java-modules-parent.git</connection>
 		<developerConnection>scm:git:ssh://github.com:tomdw/java-modules-parent.git</developerConnection>
 		<url>http://github.com/tomdw/java-modules-parent/tree/master</url>
-	</scm>
+	  <tag>v0.0.1</tag>
+  </scm>
 
 	<properties>
 		<version.maven.plugin.clean>3.1.0</version.maven.plugin.clean>
