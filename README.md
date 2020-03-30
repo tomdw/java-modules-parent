@@ -21,7 +21,7 @@ In your project which you want to build using java 11 compatible maven plugins, 
 <parent>
 	<groupId>io.github.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<relativePath />
 </parent>
 ```
