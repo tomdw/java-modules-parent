@@ -4,7 +4,7 @@
 
 	<groupId>io.github.tomdw.java.modules</groupId>
 	<artifactId>java-modules-parent</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -30,7 +30,7 @@
 		<connection>scm:git:git://github.com/tomdw/java-modules-parent.git</connection>
 		<developerConnection>scm:git:ssh://github.com:tomdw/java-modules-parent.git</developerConnection>
 		<url>http://github.com/tomdw/java-modules-parent/tree/master</url>
-	  <tag>HEAD</tag>
+	  <tag>v0.0.3</tag>
   </scm>
 
 	<properties>
