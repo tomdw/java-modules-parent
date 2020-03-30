@@ -36,20 +36,20 @@
 	<properties>
 		<version.maven.plugin.clean>3.1.0</version.maven.plugin.clean>
 		<version.maven.plugin.resources>3.1.0</version.maven.plugin.resources>
-		<version.maven.plugin.compiler>3.8.0</version.maven.plugin.compiler>
-		<version.maven.plugin.surefire>2.22.1</version.maven.plugin.surefire>
-		<version.maven.plugin.jar>3.1.1</version.maven.plugin.jar>
+		<version.maven.plugin.compiler>3.8.1</version.maven.plugin.compiler>
+		<version.maven.plugin.surefire>2.22.2</version.maven.plugin.surefire>
+		<version.maven.plugin.jar>3.2.0</version.maven.plugin.jar>
 		<version.maven.plugin.install>2.5.2</version.maven.plugin.install>
 		<version.maven.plugin.exec>1.6.0</version.maven.plugin.exec>
-		<version.maven.plugin.toolchains>1.1</version.maven.plugin.toolchains>
-		<version.maven.plugin.source>3.0.1</version.maven.plugin.source>
+		<version.maven.plugin.toolchains>3.0.0</version.maven.plugin.toolchains>
+		<version.maven.plugin.source>3.2.1</version.maven.plugin.source>
 		<version.maven.plugin.release>2.5.3</version.maven.plugin.release>
 		<version.maven.plugin.scm.provider.gitexe>1.9.4</version.maven.plugin.scm.provider.gitexe>
 		<version.maven.plugin.deploy>2.8.2</version.maven.plugin.deploy>
-		<version.maven.plugin.javadoc>3.0.1</version.maven.plugin.javadoc>
-		<version.maven.plugin.assembly>3.1.1</version.maven.plugin.assembly>
-		<version.maven.plugin.dependency>3.1.1</version.maven.plugin.dependency>
-		<version.asm>7.0</version.asm>
+		<version.maven.plugin.javadoc>3.2.0</version.maven.plugin.javadoc>
+		<version.maven.plugin.assembly>3.2.0</version.maven.plugin.assembly>
+		<version.maven.plugin.dependency>3.1.2</version.maven.plugin.dependency>
+		<version.asm>8.0</version.asm>
 
 		<version.jdk>11</version.jdk>
 		<maven.compiler.source>${version.jdk}</maven.compiler.source>
